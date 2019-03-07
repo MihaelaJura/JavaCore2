@@ -1,10 +1,10 @@
 package Task2;
 
-import Task1.Square;
+import Task8.GraphicObject;
 
 import java.util.Scanner;
 
-public class Circle {
+public class Circle extends GraphicObject {
     int radius;
 
     public Circle() {
@@ -14,18 +14,13 @@ public class Circle {
 
         this.radius = radius;
     }
-    public int getRadius() {
-        return radius;
+
+    public double getArea() {
+        return Math.PI * Math.pow(radius, 2);
     }
 
-    public void setRadius(int radius) {
-        this.radius = radius;
-    }
-    public double getArea() {
-        return Math.PI  * Math.pow(radius, 2);
-    }
     public double getPerimeter() {
-        return Math.PI  * radius *2;
+        return Math.PI * radius * 2;
     }
 
     public static void main(String[] args) {
@@ -34,12 +29,19 @@ public class Circle {
         do {
             System.out.print("Please enter circle radius:");
             radius = input.nextInt();
-        }while(radius<0);
+        } while (radius < 0);
         Circle circle = new Circle(radius);
 
-        System.out.println("Area:"+circle.getArea());
-        System.out.println("Perimeter:"+circle.getPerimeter());
+        System.out.println("Area:" + circle.getArea());
+        System.out.println("Area abstract method:" + circle.abstractArea());
+        System.out.println("Perimeter:" + circle.getPerimeter());
 
+
+    }
+
+    @Override
+    public double abstractArea() {
+        return Math.PI * Math.pow(radius, 2);
     }
 }
 
